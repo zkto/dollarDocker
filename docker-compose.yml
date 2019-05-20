@@ -1,0 +1,17 @@
+version: '2'
+services:
+  dollar_backend:
+    hostname: python
+    container_name: dollar_backend
+    working_dir: /www/dollarBackend
+    build: docker_file/backend
+    ports:
+      - "8000:8000"
+    tty: true
+    environment:
+      - DB_NAME_DOLLAR=$DB_NAME_DOLLAR
+      - DB_USER_DOLLAR=$DB_USER_DOLLAR
+      - DB_PW_DOLLAR=$DB_PW_DOLLAR
+      - DB_HOST_DOLLAR=$DB_HOST_DOLLAR
+      - DB_PORT_DOLLAR=$DB_PORT_DOLLAR
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
